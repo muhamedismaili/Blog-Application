@@ -21,8 +21,8 @@ export default function Write() {
       formData.append("file", file);
       const res = await axios.post(
         "https://blog-application-b7d5.onrender.com/api/upload",
-        { withCredentials: true },
         formData,
+        { withCredentials: true },
       );
       return res.data;
     } catch (err) {
