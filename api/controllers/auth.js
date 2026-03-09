@@ -20,7 +20,7 @@ export const register = (req, res) => {
       return res.status(500).json(err);
     }
 
-    return res.status(200).json("User has been created");
+    return res.status(200).json("User has been created!");
   });
 };
 
