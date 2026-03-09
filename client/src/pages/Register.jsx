@@ -29,8 +29,8 @@ export default function Register() {
 
       const res = await axios.post(
         "https://blog-application-b7d5.onrender.com/api/upload",
-        { withCredentials: true },
         formData,
+        { withCredentials: true },
       );
 
       return res.data; // filename
@@ -53,11 +53,11 @@ export default function Register() {
       // send user data + image
       const res = await axios.post(
         "https://blog-application-b7d5.onrender.com/api/auth/register",
-        { withCredentials: true },
         {
           ...inputs,
           img: imgUrl,
         },
+        { withCredentials: true },
       );
 
       toast.success(res.data);
