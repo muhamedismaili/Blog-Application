@@ -55,10 +55,10 @@ export default function Single() {
   return (
     <div className="single">
       <div className="content">
-        {post.img && (
+        {post?.img && (
           <img
             src={
-              post.img.startsWith("http")
+              post.img?.startsWith("http")
                 ? post.img
                 : `https://blog-application-b7d5.onrender.com/upload/${post.img}`
             }
@@ -68,8 +68,8 @@ export default function Single() {
         <div className="user">
           <img
             src={
-              post.userImg?.startsWith("http")
-                ? post.userImg
+              post?.userImg?.startsWith("http")
+                ? post?.userImg
                 : `https://blog-application-b7d5.onrender.com/upload/${post.userImg}`
             }
             alt=""

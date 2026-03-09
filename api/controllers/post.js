@@ -33,9 +33,9 @@ export const addPost = (req, res) => {
       return res.status(400).json("Please select category!");
     }
 
-    const { title, desc, cat } = req.body;
+    const { title, desc, cat,img } = req.body;
 
-    if (!title.trim() || desc === "<p><br></p>" || !cat.trim()) {
+    if (!title.trim() || desc === "<p><br></p>" || !cat.trim() || !img) {
       return res.status(400).json("Please fill the remaining fields!");
     }
 
