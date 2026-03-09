@@ -4,13 +4,13 @@ import {
   Outlet,
 } from "react-router-dom";
 
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import Write from "./pages/Write";
-import Single from "./pages/Single";
+import Register from "./pages/Register.jsx";
+import Login from "./pages/Login.jsx";
+import Write from "./pages/Write.jsx";
+import Single from "./pages/Single.jsx";
 import NavBar from "./components/Navbar";
-import Home from "./pages/Home";
-import Footer from "./components/Footer";
+import Home from "./pages/Home.jsx";
+import Footer from "./components/Footer.jsx";
 
 import "./style.scss";
 
