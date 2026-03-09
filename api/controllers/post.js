@@ -40,7 +40,7 @@ export const addPost = (req, res) => {
     }
 
     const q =
-      "INSERT INTO posts(`title`,`desc`,`img`,`cat`,`date`,`uid`) VALUES (?)";
+      "INSERT INTO posts(`title`,`desc`,`img`,`cat`,`uid`) VALUES (?, ?, ?, ?, ?)";
 
     const values = [
       req.body.title, 
