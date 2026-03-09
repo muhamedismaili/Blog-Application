@@ -22,7 +22,7 @@ export default function Single() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get(`/api/posts/${postId}`);
+        const res = await axios.get(`https://blog-application-b7d5.onrender.com/api/posts/${postId}`);
         setPost(res.data);
       } catch (err) {
         toast.error(err.response?.data)
@@ -38,7 +38,7 @@ export default function Single() {
 
   async function handleDelete() {
     try {
-      const res = await axios.delete(`/api/posts/${postId}`);
+      const res = await axios.delete(`https://blog-application-b7d5.onrender.com/api/posts/${postId}`);
       navigate("/");
       toast.success(res.data)
     } catch (err) {
@@ -51,7 +51,7 @@ export default function Single() {
       <div className="content">
         {post.img && (
           <img
-            src={post.img.startsWith("http") ? post.img : `/upload/${post.img}`}
+            src={post.img.startsWith("http") ? post.img : `https://blog-application-b7d5.onrender.com/upload/${post.img}`}
             alt=""
           />
         )}
@@ -60,7 +60,7 @@ export default function Single() {
             src={
               post.userImg?.startsWith("http")
                 ? post.userImg
-                : `/upload/${post.userImg}`
+                : `https://blog-application-b7d5.onrender.com/upload/${post.userImg}`
             }
             alt=""
           />

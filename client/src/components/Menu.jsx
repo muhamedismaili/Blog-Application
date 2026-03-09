@@ -9,7 +9,7 @@ export default function Menu({ cat }) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get(`/api/posts/?cat=${cat}`);
+        const res = await axios.get(`https://blog-application-b7d5.onrender.com/api/posts/?cat=${cat}`);
         setPosts(res.data);
       } catch (err) {
         toast.error(err.response?.data)
@@ -26,12 +26,12 @@ export default function Menu({ cat }) {
         <div className="post" key={post.id}>
           <img
             src={
-              post.img?.startsWith("http") ? post.img : `/upload/${post.img}`
+              post.img?.startsWith("http") ? post.img : `https://blog-application-b7d5.onrender.com/upload/${post.img}`
             }
             alt={post.id}
           />
           <h2>{post.title}</h2>
-          <button><Link className="link" to={`/post/${post.id}`}>Read More!</Link></button>
+          <button><Link className="link" to={`https://blog-application-b7d5.onrender.com/post/${post.id}`}>Read More!</Link></button>
         </div>
       ))}
     </div>

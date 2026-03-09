@@ -20,7 +20,7 @@ export default function Write() {
       const formData = new FormData();
       formData.append("file", file);
       const res = await axios.post(
-        "http://localhost:8800/api/upload",
+        "https://blog-application-b7d5.onrender.com/api/upload",
         formData,
       );
       return res.data;
@@ -39,13 +39,13 @@ export default function Write() {
     try {
       let res;
       state
-        ? res = await axios.put(`api/posts/${state.id}`, {
+        ? res = await axios.put(`https://blog-application-b7d5.onrender.com/api/posts/${state.id}`, {
             title,
             desc: value,
             cat,
             img: imgUrl,
           })
-        : res = await axios.post("api/posts/", {
+        : res = await axios.post("https://blog-application-b7d5.onrender.com/api/posts/", {
             title,
             desc: value,
             cat,

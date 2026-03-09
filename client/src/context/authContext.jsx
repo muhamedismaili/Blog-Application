@@ -12,12 +12,12 @@ export const AuthContextProvider = ({ children }) => {
   );
 
   async function login(inputs) {
-    const res = await axios.post("/api/auth/login", inputs);
+    const res = await axios.post("https://blog-application-b7d5.onrender.com/api/auth/login", inputs);
     setCurrentUser(res.data);
     toast.success("Logged in successfully!");
   }
   async function logout(inputs) {
-    const res = await axios.post("/api/auth/logout");
+    const res = await axios.post("https://blog-application-b7d5.onrender.com/api/auth/logout");
     setCurrentUser(null);
     toast.error("Logged out successfully!")
   }

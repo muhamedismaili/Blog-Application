@@ -30,7 +30,7 @@ export default function Register() {
       formData.append("file", file);
 
       const res = await axios.post(
-        "http://localhost:8800/api/upload",
+        "https://blog-application-b7d5.onrender.com/api/upload",
         formData
       );
 
@@ -54,7 +54,7 @@ export default function Register() {
       }
 
       // send user data + image
-      const res = await axios.post("/api/auth/register", {
+      const res = await axios.post("https://blog-application-b7d5.onrender.com/api/auth/register", {
         ...inputs,
         img: imgUrl
       });
