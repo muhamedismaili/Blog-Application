@@ -21,6 +21,7 @@ export default function Write() {
       formData.append("file", file);
       const res = await axios.post(
         "https://blog-application-b7d5.onrender.com/api/upload",
+        { withCredentials: true },
         formData,
       );
       return res.data;
@@ -39,23 +40,31 @@ export default function Write() {
     try {
       let res;
       state
-        ? res = await axios.put(`https://blog-application-b7d5.onrender.com/api/posts/${state.id}`, {
-            title,
-            desc: value,
-            cat,
-            img: imgUrl,
-          })
-        : res = await axios.post("https://blog-application-b7d5.onrender.com/api/posts/", {
-            title,
-            desc: value,
-            cat,
-            img: file ? imgUrl : "",
-            date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
-          });
-          toast.success(res.data);
-         navigate('/') 
+        ? (res = await axios.put(
+            `https://blog-application-b7d5.onrender.com/api/posts/${state.id}`,
+            {
+              title,
+              desc: value,
+              cat,
+              img: imgUrl,
+            },
+            { withCredentials: true },
+          ))
+        : (res = await axios.post(
+            "https://blog-application-b7d5.onrender.com/api/posts/",
+            {
+              title,
+              desc: value,
+              cat,
+              img: file ? imgUrl : "",
+              date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+            },
+            { withCredentials: true },
+          ));
+      toast.success(res.data);
+      navigate("/");
     } catch (err) {
-      toast.error(err.response?.data)
+      toast.error(err.response?.data);
     }
   }
   return (

@@ -22,10 +22,13 @@ export default function Single() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get(`https://blog-application-b7d5.onrender.com/api/posts/${postId}`);
+        const res = await axios.get(
+          `https://blog-application-b7d5.onrender.com/api/posts/${postId}`,
+          { withCredentials: true },
+        );
         setPost(res.data);
       } catch (err) {
-        toast.error(err.response?.data)
+        toast.error(err.response?.data);
       }
     }
     fetchData();
@@ -38,11 +41,14 @@ export default function Single() {
 
   async function handleDelete() {
     try {
-      const res = await axios.delete(`https://blog-application-b7d5.onrender.com/api/posts/${postId}`);
+      const res = await axios.delete(
+        `https://blog-application-b7d5.onrender.com/api/posts/${postId}`,
+        { withCredentials: true },
+      );
       navigate("/");
-      toast.success(res.data)
+      toast.success(res.data);
     } catch (err) {
-      toast.error(err.response?.data)
+      toast.error(err.response?.data);
     }
   }
 
@@ -51,7 +57,11 @@ export default function Single() {
       <div className="content">
         {post.img && (
           <img
-            src={post.img.startsWith("http") ? post.img : `https://blog-application-b7d5.onrender.com/upload/${post.img}`}
+            src={
+              post.img.startsWith("http")
+                ? post.img
+                : `https://blog-application-b7d5.onrender.com/upload/${post.img}`
+            }
             alt=""
           />
         )}

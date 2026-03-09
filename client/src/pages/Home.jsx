@@ -12,7 +12,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get(`https://blog-application-b7d5.onrender.com/api/posts${cat}`);
+        const res = await axios.get(`https://blog-application-b7d5.onrender.com/api/posts${cat}`,{ withCredentials: true });
         setPosts(res.data);
       } catch (err) {
         console.log(err);

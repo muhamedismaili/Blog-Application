@@ -4,7 +4,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 export default function Register() {
-
   const [inputs, setInputs] = useState({
     username: "",
     email: "",
@@ -18,24 +17,23 @@ export default function Register() {
   function handleChange(e) {
     setInputs((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   }
 
   // upload image to /public/upload
   async function upload() {
     try {
-
       const formData = new FormData();
       formData.append("file", file);
 
       const res = await axios.post(
         "https://blog-application-b7d5.onrender.com/api/upload",
-        formData
+        { withCredentials: true },
+        formData,
       );
 
       return res.data; // filename
-
     } catch (err) {
       toast.error(err.response?.data || "Image upload failed");
     }
@@ -45,7 +43,6 @@ export default function Register() {
     e.preventDefault();
 
     try {
-
       let imgUrl = "";
 
       // upload image first
@@ -54,14 +51,17 @@ export default function Register() {
       }
 
       // send user data + image
-      const res = await axios.post("https://blog-application-b7d5.onrender.com/api/auth/register", {
-        ...inputs,
-        img: imgUrl
-      });
+      const res = await axios.post(
+        "https://blog-application-b7d5.onrender.com/api/auth/register",
+        { withCredentials: true },
+        {
+          ...inputs,
+          img: imgUrl,
+        },
+      );
 
       toast.success(res.data);
       navigate("/login");
-
     } catch (err) {
       toast.error(err.response?.data || "Something went wrong");
     }
@@ -72,7 +72,6 @@ export default function Register() {
       <h1>Register</h1>
 
       <form onSubmit={handleSubmit}>
-
         <input
           required
           type="text"
@@ -100,7 +99,6 @@ export default function Register() {
         {/* profile picture upload */}
 
         <div className="fileInput">
-
           <label htmlFor="file" className="uploadBtn">
             Add profile picture
           </label>
@@ -110,7 +108,6 @@ export default function Register() {
             id="file"
             onChange={(e) => setFile(e.target.files[0])}
           />
-
         </div>
 
         <button type="submit">Register</button>
@@ -118,7 +115,6 @@ export default function Register() {
         <span>
           Do you have an account? <Link to="/login">Login</Link>
         </span>
-
       </form>
     </div>
   );
