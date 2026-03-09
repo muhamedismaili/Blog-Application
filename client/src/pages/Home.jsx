@@ -12,7 +12,10 @@ export default function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get(`https://blog-application-b7d5.onrender.com/api/posts${cat}`,{ withCredentials: true });
+        const res = await axios.get(
+          `https://blog-application-b7d5.onrender.com/api/posts${cat}`,
+          { withCredentials: true },
+        );
         setPosts(res.data);
       } catch (err) {
         console.log(err);
@@ -35,9 +38,9 @@ export default function Home() {
                 src={
                   post.img?.startsWith("http")
                     ? post.img
-                    : `/upload/${post.img}`
+                    : `https://blog-application-b7d5.onrender.com/upload/${post.img}`
                 }
-                alt=""
+                alt={post.title}
               />
             </div>
             <div className="content">
@@ -45,7 +48,11 @@ export default function Home() {
                 <h1>{post.title}</h1>
               </Link>
               <p>{getText(post.desc)}</p>
-              <button><Link className="link" to={`/post/${post.id}`}>Read More!</Link></button>
+              <button>
+                <Link className="link" to={`/post/${post.id}`}>
+                  Read More!
+                </Link>
+              </button>
             </div>
           </div>
         ))}

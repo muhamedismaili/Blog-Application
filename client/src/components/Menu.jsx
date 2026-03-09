@@ -31,7 +31,7 @@ export default function Menu({ cat }) {
             alt={post.id}
           />
           <h2>{post.title}</h2>
-          <button><Link className="link" to={`https://blog-application-b7d5.onrender.com/post/${post.id}`}>Read More!</Link></button>
+          <button><Link className="link" to={`/post/${post.id}`}>Read More!</Link></button>
         </div>
       ))}
     </div>
