@@ -1,7 +1,7 @@
 import Edit from "../img/edit.png";
 import Delete from "../img/delete.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Menu from "../components/Menu.jsx"
+import Menu from "../components/Menu";
 import axios from "axios";
 import moment from "moment";
 import { useContext, useState, useEffect } from "react";
