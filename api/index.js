@@ -11,7 +11,10 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({
+  origin: "https://blog-application-psi-seven.vercel.app",
+  credentials: true
+}));
 
 // expose upload folder
 app.use("/upload", express.static("upload"));
