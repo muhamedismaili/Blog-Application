@@ -33,7 +33,7 @@ export const addPost = (req, res) => {
       return res.status(400).json("Please select category!");
     }
 
-    const { title, desc, cat, img } = req.body;
+    const { title, desc, cat,img } = req.body;
 
     if (!title.trim() || desc === "<p><br></p>" || !cat.trim() || !img) {
       return res.status(400).json("Please fill the remaining fields!");
@@ -43,17 +43,14 @@ export const addPost = (req, res) => {
       "INSERT INTO posts(`title`,`desc`,`img`,`cat`,`uid`) VALUES (?, ?, ?, ?, ?)";
 
     const values = [
-      req.body.title,
+      req.body.title, 
       req.body.desc,
       req.body.img,
       req.body.cat,
       userInfo.id,
     ];
     db.query(q, values, (err, data) => {
-      if (err) {
-        console.log("DB ERROR:", err);
-        return res.status(500).json(err);
-      }
+      if (err) return res.status(500).json(err);
       return res.status(200).json("post has been created!");
     });
   });

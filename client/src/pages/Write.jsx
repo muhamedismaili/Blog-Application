@@ -15,6 +15,15 @@ export default function Write() {
   const [cat, setCat] = useState(state?.cat || "");
 
   async function handleSubmit(e) {
+    if (img.startsWith("data:image")) {
+      toast.error("Please paste an image URL, not an uploaded image.");
+      return;
+    }
+
+    if (img.length > 500) {
+      toast.error("Image URL is too long.");
+      return;
+    }
     try {
       let res;
       state

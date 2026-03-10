@@ -22,6 +22,15 @@ export default function Register() {
   }
 
   async function handleSubmit(e) {
+    if (img.startsWith("data:image")) {
+      toast.error("Please paste an image URL, not an uploaded image.");
+      return;
+    }
+
+    if (img.length > 500) {
+      toast.error("Image URL is too long.");
+      return;
+    }
     e.preventDefault();
 
     try {
@@ -71,7 +80,6 @@ export default function Register() {
         />
 
         <div className="fileInput">
-
           <input
             type="text"
             placeholder="Paste image URL (https://...)"
