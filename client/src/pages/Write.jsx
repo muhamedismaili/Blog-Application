@@ -4,7 +4,6 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
-import moment from "moment";
 import { toast } from "react-toastify";
 
 export default function Write() {
@@ -12,31 +11,10 @@ export default function Write() {
   const navigate = useNavigate();
   const [value, setValue] = useState(state?.desc || "");
   const [title, setTitile] = useState(state?.title || "");
-  const [file, setFile] = useState(null);
+  const [img, setImg] = useState(state?.img || "");
   const [cat, setCat] = useState(state?.cat || "");
 
-  async function upload() {
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-      const res = await axios.post(
-        "https://blog-application-b7d5.onrender.com/api/upload",
-        formData,
-        { withCredentials: true },
-      );
-      return res.data;
-    } catch (err) {
-      toast.error(err.response?.data || "Something went wrong");
-    }
-  }
-
   async function handleSubmit(e) {
-    let imgUrl = state?.img;
-
-    if (file) {
-      imgUrl = await upload();
-    }
-
     try {
       let res;
       state
@@ -46,7 +24,7 @@ export default function Write() {
               title,
               desc: value,
               cat,
-              img: imgUrl,
+              img: img,
             },
             { withCredentials: true },
           ))
@@ -56,7 +34,7 @@ export default function Write() {
               title,
               desc: value,
               cat,
-              img: file ? imgUrl : "",
+              img: img,
             },
             { withCredentials: true },
           ));
@@ -94,13 +72,11 @@ export default function Write() {
             <b>Visibilty: </b> Public
           </span>
           <input
-            style={{ display: "none" }}
-            type="file"
-            id="file"
-            name=""
-            onChange={(e) => setFile(e.target.files[0])}
+            type="text"
+            placeholder="Paste image URL (https://...)"
+            value={img}
+            onChange={(e) => setImg(e.target.value)}
           />
-          <label htmlFor="file">Upload Image</label>
           <div className="buttons">
             <button>Save as a draft</button>
             <button onClick={handleSubmit}>Publish</button>

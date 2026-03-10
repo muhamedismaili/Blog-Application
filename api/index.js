@@ -2,7 +2,6 @@ import express from "express";
 import postRoutes from "./routes/posts.js";
 import authRoutes from "./routes/auth.js";
 import cookieParser from "cookie-parser";
-import multer from "multer";
 import cors from "cors";
 import dotenv from "dotenv";
 
@@ -11,32 +10,16 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
-  origin: "https://blog-application-psi-seven.vercel.app",
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://blog-application-psi-seven.vercel.app",
+    ],
+    credentials: true,
+  }),
+);
 
-// expose upload folder
-app.use("/upload", express.static("upload"));
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "upload");   // change this also
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + file.originalname);
-  },
-});
-
-const upload = multer({ storage });
-
-app.post("/api/upload", upload.single("file"), function (req, res) {
-  if (!req.file) {
-    return res.status(400).json("No file uploaded");
-  }
-
-  res.status(200).json(req.file.filename);
-});
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
 

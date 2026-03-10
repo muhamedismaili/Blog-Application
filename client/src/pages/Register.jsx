@@ -4,13 +4,13 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 export default function Register() {
+  const [ img, setImg] = useState(state?.img || "");
   const [inputs, setInputs] = useState({
     username: "",
     email: "",
     password: "",
   });
 
-  const [file, setFile] = useState(null);
 
   const navigate = useNavigate();
 
@@ -21,41 +21,16 @@ export default function Register() {
     }));
   }
 
-  // upload image to /public/upload
-  async function upload() {
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-
-      const res = await axios.post(
-        "https://blog-application-b7d5.onrender.com/api/upload",
-        formData,
-        { withCredentials: true },
-      );
-
-      return res.data; // filename
-    } catch (err) {
-      toast.error(err.response?.data || "Image upload failed");
-    }
-  }
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     try {
-      let imgUrl = "";
-
-      // upload image first
-      if (file) {
-        imgUrl = await upload();
-      }
-
-      // send user data + image
       const res = await axios.post(
         "https://blog-application-b7d5.onrender.com/api/auth/register",
         {
           ...inputs,
-          img: imgUrl,
+          img: img,
         },
         { withCredentials: true },
       );
@@ -96,17 +71,16 @@ export default function Register() {
           onChange={handleChange}
         />
 
-        {/* profile picture upload */}
-
         <div className="fileInput">
           <label htmlFor="file" className="uploadBtn">
             Add profile picture
           </label>
 
           <input
-            type="file"
-            id="file"
-            onChange={(e) => setFile(e.target.files[0])}
+            type="text"
+            placeholder="Paste image URL (https://...)"
+            value={img}
+            onChange={(e) => setImg(e.target.value)}
           />
         </div>
 
