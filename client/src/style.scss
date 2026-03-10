@@ -69,29 +69,17 @@ $lightGreen: #b9e7e7;
     }
 
     .fileInput {
-  display: flex;
-  justify-content: center;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
 
-  input {
-    display: none;
-  }
-
-  .uploadBtn {
-    padding: 8px 12px;
-    background-color: $lightGreen;
-    border: 1px solid teal;
-    color: teal;
-    cursor: pointer;
-    font-size: 12px;
-    border-radius: 4px;
-    text-align: center;
-
-    &:hover {
-      background-color: teal;
-      color: white;
+      input {
+        padding: 8px;
+        border: 1px solid lightgray;
+        width: 100%;
+      }
     }
-  }
-}
   }
 }
 

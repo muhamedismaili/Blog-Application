@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
 export default function Register() {
-  const [ img, setImg] = useState(state?.img || "");
+  const state = useLocation().state;
+  const [img, setImg] = useState(state?.img || "");
   const [inputs, setInputs] = useState({
     username: "",
     email: "",
     password: "",
   });
-
 
   const navigate = useNavigate();
 
@@ -20,7 +20,6 @@ export default function Register() {
       [e.target.name]: e.target.value,
     }));
   }
-
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -72,9 +71,6 @@ export default function Register() {
         />
 
         <div className="fileInput">
-          <label htmlFor="file" className="uploadBtn">
-            Add profile picture
-          </label>
 
           <input
             type="text"
