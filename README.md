@@ -127,25 +127,25 @@ git clone https://github.com/muhamedismaili/Blog-Application.git
 cd Blog-Application
 ```
 
-```bash
 # Install backend dependencies
+```bash
 cd api
 npm install
 ```
 
-```bash
 # Run backend server
+```bash
 npm start
 ```
 
-```bash
 # Install frontend dependencies
+```bash
 cd ../client
 npm install
 ```
 
-```bash
 # Run frontend
+```bash
 npm run dev
 ```
 
