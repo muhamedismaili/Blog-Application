@@ -98,7 +98,7 @@ Displays all blog posts with category filtering and navigation.
 ---
 
 ### Single Post Page
-![Single Post](screenshots/02-single-post/menu.png)
+![Single Post](screenshots/02-single-post-and-menu.png)
 
 Shows a detailed blog article including title, content, and author information.
 
@@ -125,20 +125,29 @@ Clone the repository and run the project locally.
 ```bash
 git clone https://github.com/muhamedismaili/Blog-Application.git
 cd Blog-Application
+```
 
+```bash
 # Install backend dependencies
 cd api
 npm install
+```
 
+```bash
 # Run backend server
 npm start
+```
 
+```bash
 # Install frontend dependencies
 cd ../client
 npm install
+```
 
+```bash
 # Run frontend
 npm run dev
+```
 
 ## 📈 What This Project Demonstrates
 
