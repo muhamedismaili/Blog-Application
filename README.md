@@ -54,7 +54,7 @@ The project demonstrates **full-stack development**, integrating a **React front
 
 - Full-stack architecture with separated frontend and backend  
 - REST API communication between client and server  
-- JWT authentication and secure login system  
+- JWT-based authentication and secure login/registration system  
 - Create, update, and delete blog posts  
 - Category-based filtering of articles  
 - Image upload for blog posts  
@@ -76,7 +76,7 @@ The application follows a **modular full-stack architecture**.
 
 ### Backend (Node.js / Express)
 
-- RESTful API endpoints  
+- RESTful API endpoints for posts, authentication, and user management
 - Controller-based route structure  
 - Middleware for authentication and authorization  
 - Database queries using MySQL  
