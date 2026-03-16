@@ -88,6 +88,42 @@ The application follows a **modular full-stack architecture**.
 
 ---
 
+## 📂 Project Structure
+
+```
+Blog-Application/
+│
+├── api/                     # Node.js / Express backend
+│   ├── controllers/
+│   │   ├── auth.js
+│   │   └── post.js
+│   │
+│   ├── routes/
+│   │   ├── auth.js
+│   │   └── posts.js
+│   │
+│   ├── db.js                # MySQL database connection
+│   ├── index.js             # Express server entry point
+│   └── package.json
+│
+├── client/                  # React frontend (Vite)
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── img/
+│   │   ├── pages/
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── style.scss
+│   │
+│   ├── index.html
+│   ├── vite.config.js
+│   └── package.json
+│
+└── README.md
+```
+
 ## 📸 Screenshots
 
 ### Home Page
